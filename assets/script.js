@@ -6,7 +6,7 @@ var exclude = "&exclude=minutely,hourly,alerts&units=imperial";
 var cityList = [];
 var counter = 0;
 var searchButton = document.getElementById("search-button");
-var cities = document.querySelector("#saved-cities");
+var citiesListArea = document.querySelector("#saved-cities");
 
 // need to save the search when clicking the submit city button
 function saveCities(city) {
@@ -17,7 +17,7 @@ function saveCities(city) {
    // searchedCity.addEventListener("click", function () {
    //    displayCity(this.id);
    // });
-   cities.appendChild(searchedCity);
+   citiesListArea.appendChild(searchedCity);
    cityList.push(city);
    localStorage.setItem("cityList", JSON.stringify(cityList));
    counter++;
