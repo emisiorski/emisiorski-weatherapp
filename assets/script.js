@@ -23,7 +23,18 @@ function saveCities(city) {
    counter++;
 }
 
-
+function loadSavedCities() {
+   cityList = JSON.parse(localStorage.getItem("cityList")) || [];
+   for (var i = 0; i < cityList.length; i++);
+   var searchedCity = document.createElement("button");
+   searchedCity.setAttribute("id", cityList);
+   searchedCity.className = "city-button";
+   searchedCity.textContent = city;
+   searchedCity.addEventListener("click", function () {
+      displayCity(this.id);
+   });
+   citiesListArea.appendChild(searchedCity);
+}
 // // // need to display the weather forecast at the top
 
 searchButton.addEventListener("click", function () {
