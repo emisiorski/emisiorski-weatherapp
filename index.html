@@ -13,63 +13,49 @@
 </head>
 
 <body>
-    <section class="hero is-small is-link">
-        <div class="hero-body">
-            <p class="title has-text-centered">
-                Weather Dashboard
-            </p>
-        </div>
-    </section>
+    <div>
+        <section class="hero is-small is-link">
+            <div class="hero-body">
+                <p class="title has-text-centered">
+                    Weather Dashboard
+                </p>
+            </div>
+        </section>
+    </div>
+    <br>
     <div class="columns is-multiline is-mobile">
         <div class="column is-one-third">
             <form class="box">
                 <div class="field">
                     <label class="label">Search for a City</label>
                     <div class="control">
-                        <input id = "the-city" class="input" type="city" placeholder="City Name">
+                        <input id="the-city" class="input" type="city" placeholder="City Name">
                     </div>
                 </div>
 
-                <button type = "button" id = "search-button" class="button is-primary is-fullwidth">Search</button>
+                <button type="button" id="search-button" class="button is-primary is-fullwidth">Search</button>
             </form>
-            <div id = "saved-cities" class="box">
- 
+            <div id="saved-cities" class="box">
+
             </div>
         </div>
-        <div class="column is-two-thirds">
-            <div class="box">
-              
-            </div>
-            <h1>5 Day Forecast</h1>
-            <div class="columns">
-                <div class="column">
-                    <div class="box">
-                        day 1
-                    </div>
+        <br>
+        <div>
+            <div>
+                <div class="box current-city">
+                    <h2 id="city"></h2>
+                    <div id="temperature" class="stats">Temp: </div>
+                    <div id="wind" class="stats">Wind:</div>
+                    <div id="humidity" class="stats">Humidity: </div>
+                    <div id="uv-index" class="stats">UV Index:</div>
                 </div>
-                <div class="column">
-                    <div class="box">
-                        day 2
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="box">
-                        day 3
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="box">
-                        day 4
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="box">
-                        day 5
-                    </div>
+                <div id="weather-forecast">
+                    <h3>5-Day Forecast</h3>
                 </div>
             </div>
         </div>
-    <script src="assets/script.js"></script>
+        <script src="assets/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </body>
 
 </html>
