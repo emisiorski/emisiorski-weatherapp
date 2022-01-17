@@ -37,7 +37,7 @@ function loadSavedCities() {
 }
 
 function displayWeather(data) {
-   var forecast = document.getElementById("weather-forecast");
+   var forecast = document.getElementById("forecast");
    forecast.innerHTML = "<h3>5-Day Forecast</h3>";
    var row = document.createElement("div");
    row.classList = "row";
@@ -46,35 +46,25 @@ function displayWeather(data) {
    for (i = 0; i < 5; i++) {
       var card = document.createElement("div");
       var date = document.createElement("div");
-      var image = document.createElement("img");
+      var imageIcon = document.createElement("img");
       var temp = document.createElement("div");
       var wind = document.createElement("div");
       var humidity = document.createElement("div");
 
-      card.classList = "col-2 card";
-      date.classList = "key";
-      temp.classList = "key";
-      wind.classList = "key";
-      humidity.classList = "key";
+      card.className = "card column is-one-fifth has-background-info-dark has-text-white-ter";
 
-      var image = 'http://openweathermap.org/img/wn/' + data.daily.weather[0].icon;
-      image.setAttribute('src', weatherImage);
+      var weatherImage = 'http://openweathermap.org/img/wn/' + data.daily[i].weather[0].icon + ".png";
+      imageIcon.setAttribute('src', weatherImage);
 
-
+   
 
       date.textContent = moment().add(i + 1, 'days').format(' MM/DD/YY');
       temp.textContent = "Temp: " + data.daily[i].temp.day + " F";
       wind.textContent = "Wind: " + data.daily[i].wind_speed + " MPH";
       humidity.textContent = "Humidity: " + data.daily[i].humidity + "%";
 
-      console.log(date);
-      console.log(temp);
-      console.log(wind);
-      console.log(humidity);
-
-      console.log(humidity);
       card.appendChild(date);
-      card.appendChild(image);
+      card.appendChild(imageIcon);
       card.appendChild(temp);
       card.appendChild(wind);
       card.appendChild(humidity);
@@ -83,7 +73,9 @@ function displayWeather(data) {
 }
 
 function displayFiveDay(searchedCity) {
-
+   if (!searchedCity) {
+      return false;
+   }
    fetch(weatherUrl + searchedCity + apiKey)
       .then(function (response) {
          return response.json();
@@ -112,6 +104,7 @@ function displayFiveDay(searchedCity) {
                document.getElementById("humidity").textContent = "Humidity: " + humidity + "%";
                document.getElementById("uv-index").textContent = "UV Index: ";
 
+
                var uvBox = document.createElement("div");
                uvBox.setAttribute("id", "uv-box");
                uvBox.textContent = uvIndex;
@@ -130,8 +123,9 @@ function displayFiveDay(searchedCity) {
                   document.getElementById("uv-box").style.backgroundColor = "violet";
                }
 
-               displayFiveDay(data);
+               displayWeather(data);
             })
+           
       });
 
    document.getElementById("the-city").value = "";
